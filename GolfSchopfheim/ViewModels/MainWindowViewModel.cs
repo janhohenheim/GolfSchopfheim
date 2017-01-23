@@ -19,11 +19,14 @@ namespace GolfSchopfheim.ViewModels
         public ICommand DisplayMessageCommand { get; }
 
         public string Message { get; private set; }
+
+        public string Status { get; private set; } = "Ready";
         #endregion
 
         private void OnDisplayMessage()
         {
             Message = RandomString(random.Next(1, 100));
+            Status = "Key successfully generated";
         }
 
         public static string RandomString(int length)

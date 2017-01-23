@@ -11,7 +11,17 @@
         d:DataContext="{d:DesignInstance viewModels:MainWindowViewModel}"
         Title="MainWindow" Height="350" Width="525">
     <Grid>
-        <!--<Label Content="{Binding Message}"></Label>-->
-        <Button Command="{Binding DisplayMessageCommand}" Content="{Binding Message}"></Button>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*" />
+            <RowDefinition Height="*" />
+            <RowDefinition Height="20" />
+        </Grid.RowDefinitions>
+        <Label Content="{Binding Message}" Grid.Row="0"></Label>
+        <Button Command="{Binding DisplayMessageCommand}" Content="Generate Windows Licence" Grid.Row="1"></Button>
+        <StatusBar Grid.Row="2">
+            <StatusBarItem>
+                <TextBlock Text="{Binding Status}" />
+            </StatusBarItem>
+        </StatusBar>
     </Grid>
 </Window>
