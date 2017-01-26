@@ -1,39 +1,46 @@
 ﻿using System;
-using System.Linq;
+using System.Diagnostics;
+using System.Threading;
+using System.Threading.Tasks;
+using System.Windows;
 using System.Windows.Input;
 using Microsoft.Practices.Prism.Commands;
 using Microsoft.Practices.Prism.Mvvm;
+using PropertyChanged;
 
 namespace GolfSchopfheim.ViewModels
 {
+    [ImplementPropertyChanged]
     public class MainWindowViewModel : BindableBase
     {
         private static readonly Random random = new Random();
 
         public MainWindowViewModel()
         {
-            DisplayMessageCommand = new DelegateCommand(OnDisplayMessage);
+            StartGolfCommand = new DelegateCommand(OnStartGolf);
+            ReturnToOsCommand = new DelegateCommand(OnReturnToOs);
         }
 
         #region Properties
-        public ICommand DisplayMessageCommand { get; }
+        public ICommand StartGolfCommand { get; }
 
-        public string Message { get; private set; }
+        public ICommand ReturnToOsCommand { get; }
 
         public string Status { get; private set; } = "Ready";
         #endregion
 
-        private void OnDisplayMessage()
+        private void OnStartGolf()
         {
-            Message = RandomString(random.Next(1, 100));
-            Status = "Key successfully generated";
+            Status = "Golf started";
+            Process.Start(@"calc.exe");
         }
 
-        public static string RandomString(int length)
+        private async void OnReturnToOs()
         {
-            const string chars = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-            return new string(Enumerable.Repeat(chars, length)
-              .Select(s => s[random.Next(s.Length)]).ToArray());
+            Status = "Bye bye :)";
+            await Task.Delay(1000);
+            Application.Current.MainWindow.Close();
         }
+        
     }
 }

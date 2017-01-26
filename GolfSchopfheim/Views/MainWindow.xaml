@@ -9,15 +9,44 @@
         mc:Ignorable="d"
         mvvm:ViewModelLocator.AutoWireViewModel="True"
         d:DataContext="{d:DesignInstance viewModels:MainWindowViewModel}"
-        Title="MainWindow" Height="350" Width="525">
+        Title="Schopfheim Interface" Height="1080" Width="1920" WindowState="Maximized" WindowStyle="None" ResizeMode="NoResize">
     <Grid>
         <Grid.RowDefinitions>
-            <RowDefinition Height="*" />
+            <RowDefinition Height="20" />
             <RowDefinition Height="*" />
             <RowDefinition Height="20" />
         </Grid.RowDefinitions>
-        <Label Content="{Binding Message}" Grid.Row="0"></Label>
-        <Button Command="{Binding DisplayMessageCommand}" Content="Generate Windows Licence" Grid.Row="1"></Button>
+        <StatusBar Grid.Row="0">
+            <StatusBarItem>
+                <TextBlock Text="Bitte wählen Sie ein Programm" />
+            </StatusBarItem>
+        </StatusBar>
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+                <ColumnDefinition Width="*" />
+            </Grid.ColumnDefinitions>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+                <RowDefinition Height="*" />
+            </Grid.RowDefinitions>
+            <Button Command="{Binding StartGolfCommand}" FontSize="40" Content="Start Indoor Golf Simulator" Grid.Row="1" Grid.Column="1" />
+            <Grid Grid.Row="2" Grid.Column="0">
+                <Grid.RowDefinitions>
+                    <RowDefinition Height="*" />
+                    <RowDefinition Height="0.5*" />
+                </Grid.RowDefinitions>
+                <Grid.ColumnDefinitions>
+                    <ColumnDefinition Width="*" />
+                    <ColumnDefinition Width="*" />
+                </Grid.ColumnDefinitions>
+                <Button Command="{Binding ReturnToOsCommand}" Content="Exit to Windows" Grid.Row="1" Grid.Column="0" Margin="10" />
+            </Grid>
+            
+        </Grid>
+        
         <StatusBar Grid.Row="2">
             <StatusBarItem>
                 <TextBlock Text="{Binding Status}" />
