@@ -1,11 +1,11 @@
 ﻿using System;
 using System.Diagnostics;
-using System.Threading;
 using System.Threading.Tasks;
 using System.Windows;
 using System.Windows.Input;
-using Microsoft.Practices.Prism.Commands;
-using Microsoft.Practices.Prism.Mvvm;
+using Prism.Commands;
+using Prism.Interactivity.InteractionRequest;
+using Prism.Mvvm;
 using PropertyChanged;
 
 namespace GolfSchopfheim.ViewModels
@@ -27,6 +27,8 @@ namespace GolfSchopfheim.ViewModels
         public ICommand ReturnToOsCommand { get; }
 
         public string Status { get; private set; } = "Ready";
+
+        public InteractionRequest<INotification>
         #endregion
 
         private void OnStartGolf()
