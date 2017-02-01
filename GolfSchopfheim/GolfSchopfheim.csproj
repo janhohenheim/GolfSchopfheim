@@ -71,6 +71,7 @@
     </ApplicationDefinition>
     <Compile Include="Mvvm\Common\IExecutableUnit.cs" />
     <Compile Include="Mvvm\Interactions\PinRequestNotification.cs" />
+    <Compile Include="Mvvm\WindowActions\PinWindowAction.cs" />
     <Compile Include="ViewModels\PinInputUnitViewModel.cs" />
     <Compile Include="ViewModels\PinWIndowViewModel.cs" />
     <Compile Include="Views\PinWindow.xaml.cs">

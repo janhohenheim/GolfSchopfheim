@@ -6,10 +6,20 @@
         xmlns:local="clr-namespace:GolfSchopfheim"
         xmlns:mvvm="http://prismlibrary.com/"
         xmlns:viewModels="clr-namespace:GolfSchopfheim.ViewModels"
+        xmlns:i="http://schemas.microsoft.com/expression/2010/interactivity"
+        xmlns:interactions="clr-namespace:GolfSchopfheim.Mvvm.Interactions"
+        xmlns:windowActions="clr-namespace:GolfSchopfheim.Mvvm.WindowActions"
         mc:Ignorable="d"
         mvvm:ViewModelLocator.AutoWireViewModel="True"
         d:DataContext="{d:DesignInstance viewModels:MainWindowViewModel}"
         Title="Schopfheim Interface" Height="1080" Width="1920" WindowState="Maximized" WindowStyle="None" ResizeMode="NoResize">
+
+    <i:Interaction.Triggers >
+        <i:EventTrigger EventName="Raised" SourceObject="{Binding PinInteractionRequest}">
+            <windowActions:PinWindowAction />
+        </i:EventTrigger>
+    </i:Interaction.Triggers>
+
     <Grid>
         <Grid.RowDefinitions>
             <RowDefinition Height="20" />

@@ -15,7 +15,7 @@ namespace GolfSchopfheim.ViewModels
             ExecuteCommand = new DelegateCommand(onExecute);
         }
 
-        #region properties
+        #region Properties
         public string Text { get; }
 
         public ICommand ExecuteCommand { get; }
